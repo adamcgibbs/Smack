@@ -135,6 +135,7 @@ object AuthService {
                 UserDataService.avatarColor = response.getString("avatarColor")
                 UserDataService.id = response.getString("_id")
 
+                println("Starting bradcast")
                 val userDataChange = Intent(BROADCAST_USER_DATA_CHANGE)
                 LocalBroadcastManager.getInstance(context).sendBroadcast(userDataChange)
                 complete(true)
