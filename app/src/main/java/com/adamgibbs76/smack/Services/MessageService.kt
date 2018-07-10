@@ -2,6 +2,7 @@ package com.adamgibbs76.smack.Services
 
 import android.content.Context
 import android.util.Log
+import com.adamgibbs76.smack.Controller.App
 import com.adamgibbs76.smack.Model.Channel
 import com.adamgibbs76.smack.Utilities.URL_GET_CHANNELS
 import com.android.volley.Response
@@ -45,11 +46,11 @@ object MessageService {
 
             override fun getHeaders(): MutableMap<String, String> {
                 val headers = HashMap<String, String>()
-                headers.put("Authorization", "Bearer ${AuthService.authToken}")
+                headers.put("Authorization", "Bearer ${App.prefs.authToken}")
                 return headers
             }
         }
 
-        Volley.newRequestQueue(context).add(channelsRequest)
+        App.prefs.requestQueue.add(channelsRequest)
     }
 }
